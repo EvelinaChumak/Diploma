@@ -12,14 +12,14 @@ trans_init = np.asarray([[1.0, 0.0, 0.0, 0.0],
 threshold = 0.02
 
 def valid_correspondence():
-    correspondese_array = []
+    correspondence_array = []
     for i in range(0,57): 
-        correspondese_array_2 = []
+        correspondence_array_2 = []
         for j in range(0,5):
             source, target = read_clouds_target_sample(1, o3d.data.LivingRoomPointClouds().paths[i])
             target.transform(random_transform()) 
-            correspondese_array_2.append(np.asarray(evalution(source, target, threshold, trans_init)))
-        correspondese_array.append(np.mean(correspondese_array_2))
+            correspondence_array_2.append(np.asarray(evalution(source, target, threshold, trans_init)))
+        correspondence_array.append(np.mean(correspondence_array_2))
 
-    print (np.mean(correspondese_array))
+    print (np.mean(correspondence_array))
     

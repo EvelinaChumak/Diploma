@@ -18,7 +18,6 @@ def preprocess_point_cloud(cloud):
 
 
 def execute_global_registration_with_target_density(source_cloud, target_cloud):
-    print(cloud_density(source_cloud)/cloud_density(target_cloud))
     distance_threshold = cloud_density(target_cloud) * 1.5
     source, source_fpfh = preprocess_point_cloud(source_cloud)
     target, target_fpfh = preprocess_point_cloud(target_cloud)
