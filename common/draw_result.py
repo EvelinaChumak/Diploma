@@ -16,10 +16,11 @@ def draw_registration_result(source, target, transformation):
                                       up=[-0.3402, -0.9189, -0.1996])
 
 
-def show_down_sample_correspondese(down_sample, correspondese):
-    plt.plot(down_sample, correspondese)
+def show_down_sample_correspondence(down_sample, correspondence):
+    plt.plot(down_sample, correspondence)
     plt.xlabel('Down sample')
-    plt.ylabel('Correspondese')
+    plt.ylabel('Correspondence')
+    plt.grid(True)
     plt.show()
 
 
@@ -27,4 +28,5 @@ def show_down_sample_time(down_sample, time):
     plt.plot(down_sample, time)
     plt.xlabel('Down sample')
     plt.ylabel('Time')
+    plt.grid(True)
     plt.show()

@@ -2,6 +2,7 @@ import open3d as o3d
 import matplotlib.pyplot as plt
 import numpy as np
 import registration
+from common.transform import random_transform
 from common.cloud_preparation import read_clouds_target_sample
 
 
@@ -22,13 +23,11 @@ def prepair_with_0_5():
         for i in range (0, 10):
             correspodence_3 = []
             for j in range (0,5):
-                
                 source, target = read_clouds_target_sample(down_sample, o3d.data.LivingRoomPointClouds().paths[i])
-                trans_init = registration.random_transform(low=low, high=high, rotation=rotation)
+                trans_init = random_transform(low=low, high=high, rotation=rotation)
 
                 transformation = registration.ICP_registration(source, target, threshold, -trans_init)
                 correspodence_3.append(registration.evalution(source, target, threshold, transformation))
-                print(registration.evalution(source, target, threshold, transformation))
                 
             correspodence_2.append(np.mean(correspodence_3))     
         
@@ -40,9 +39,10 @@ def prepair_with_0_5():
 
     plt.plot(change, correspodence_1)
     plt.xlabel('Change')
-    plt.ylabel('Correspondese')
-    plt.minorticks_on()
+    plt.ylabel('Correspondence')
+    plt.grid(True)
     plt.show()
+
 
 def prepair_with_0_1():
     change = []
@@ -55,13 +55,11 @@ def prepair_with_0_1():
         for i in range (0, 10):
             correspodence_3 = []
             for j in range (0,5):
-                
                 source, target = read_clouds_target_sample(down_sample, o3d.data.LivingRoomPointClouds().paths[i])
-                trans_init = registration.random_transform(low=low, high=high, rotation=rotation)
+                trans_init = random_transform(low=low, high=high, rotation=rotation)
 
                 transformation = registration.ICP_registration(source, target, threshold, -trans_init)
                 correspodence_3.append(registration.evalution(source, target, threshold, transformation))
-                print(registration.evalution(source, target, threshold, transformation))
                 
             correspodence_2.append(np.mean(correspodence_3))     
         
@@ -73,6 +71,6 @@ def prepair_with_0_1():
 
     plt.plot(change, correspodence_1)
     plt.xlabel('Change')
-    plt.ylabel('Correspondese')
-    plt.minorticks_on()
+    plt.ylabel('Correspondence')
+    plt.grid(True)
     plt.show()
